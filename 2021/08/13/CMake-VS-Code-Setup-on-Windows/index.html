@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        CMake VS Code Setup on Windows - Ken&#39;s TechBlog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> write something </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/imgs/panda.jpeg" />
+        </div>
+        <div class="name">
+            <i>Ken Lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake-VS-Code-Setup-on-Windows"><span class="toc-text">CMake VS Code Setup on Windows</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-CMake"><span class="toc-text">What’s CMake</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Useful-Variables-and-Commands-for-CMakeLists-txt"><span class="toc-text">Useful Variables and Commands for CMakeLists.txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference:</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> write something </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        CMake VS Code Setup on Windows
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-08-13 02:26:38</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Cmake, Windows" title="Cmake, Windows">Cmake, Windows</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="CMake-VS-Code-Setup-on-Windows"><a href="#CMake-VS-Code-Setup-on-Windows" class="headerlink" title="CMake VS Code Setup on Windows"></a>CMake VS Code Setup on Windows</h1><p>In this article, I would like to introduce how to use CMake with VS Code on Windows.</p>
+<h2 id="What’s-CMake"><a href="#What’s-CMake" class="headerlink" title="What’s CMake"></a>What’s CMake</h2><hr>
+<p>CMake(Cross Platform Make) is free and open-source software for build automation, testing, packaging and installation of software by using a compiler-independent method. It’s widely used in software projects. CMake offers higher-level mechanisms like external library detection and configuration (i.e. automatically setting up the defines, include directories and link files for working with a 3rd party library), support for generating installation (and packaging), integration with the CTest test utility and so on.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><hr>
+<p>On Windows, CMake could be directly downloaded und installed with their <a target="_blank" rel="noopener" href="https://cmake.org/download/">official website</a>.<br>After Installation, in order to use <code>cmake</code> in cmd, you have to add the path to your environments’ variables following:</p>
+<pre><code>1. Click Start, type Accounts in the Start search box, and then click User Accounts under Programs.
+
+2. If you are prompted for an administrator password or for a confirmation, type the password, or click Allow.
+
+3. In the User Accounts dialog box, click Change my environment variables under Tasks.
+
+4. Make the changes that you want to the user environment variables for your user account, and then click OK.
+</code></pre>
+<p>To verify installation, you could type <code>cmake --version</code> in your cmd/powershell.</p>
+<p>In VS Code, make sure the <code>Extensions</code> named <code>CMake</code> and <code>CMake Tools</code> successfully installed.</p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><hr>
+<p>At the beginning, create a folder and use VS Code to open it. We’ll use this folder to test the functions of CMake.  </p>
+<p>Additionally, make sure you’ve correct configuration for compiler path in <code>C/C++: Edit Configurations(UI)</code>(use ctrl+shift+P and type in). In my case, the path is <code>C:/msys64/mingw64/bin/gcc.exe</code>.</p>
+<p>It’s highly recommanded that a C++ project with CMake use the folder architecture as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">|- test_folder</span><br><span class="line">    |--.vscode</span><br><span class="line">    |    |-- c_cpp_properties.json</span><br><span class="line">    |    |-- tasks.json</span><br><span class="line">    |    └-- launch.json</span><br><span class="line">    |-- build</span><br><span class="line">    |-- include</span><br><span class="line">    |    └-- your-head-files</span><br><span class="line">    |-- src</span><br><span class="line">    |    └-- source_code.cpp</span><br><span class="line">    └-- CMakeLists.txt</span><br></pre></td></tr></table></figure>
+<p>if you don’t know how to get <code>c_cpp_properties.json</code>, <code>tasks.json</code>, <code>launch.json</code>, please refer to <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-msvc">here</a> and <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/launch-json-reference">Debug using launch.json</a> for help.</p>
+<p>The core part is how to write the <code>CMakeLists.txt</code>:<br>Actually <code>cmake</code> is using <code>CMakeLists.txt</code> to execute build. A simple example:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span> (VERSION <span class="number">2.8</span>...<span class="number">3.21</span>.<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(project_name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">aux_source_directory</span>(<span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/src DIR_SRC)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span> (project_name <span class="variable">$&#123;DIR_SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+<p>The variables and commands for <code>CMakeLists.txt</code> will be introduced in next part.</p>
+<p>Now we have all requirements for cmake, let’s try:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>If you don’t have <code>make</code> installed, here is a short cut to make it work:</p>
+<ol>
+<li>Go to the folder where you install you compiler MinGW, in my case it’s under <code>C:\msys64\mingw64\bin</code>.</li>
+<li>Find a file named <code>mingw32-make.exe</code> and make a copy in the same foler.</li>
+<li>Rename the copy to <code>make.exe</code>.</li>
+<li>Check with <code>make --version</code> in cmd or powershell.</li>
+</ol>
+<p>If the codes above work, you’ll see *.exe created under <code>/build</code>, cmake works successfully.</p>
+<h2 id="Useful-Variables-and-Commands-for-CMakeLists-txt"><a href="#Useful-Variables-and-Commands-for-CMakeLists-txt" class="headerlink" title="Useful Variables and Commands for CMakeLists.txt"></a>Useful Variables and Commands for CMakeLists.txt</h2><hr>
+<p>The meaning of following words are able to be found under this <a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/index.html">documentaion</a></p>
+<ul>
+<li>Variables: <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CMAKE_SOURCE_DIR</span><br><span class="line"></span><br><span class="line">PROJECT_SOURCE_DIR</span><br><span class="line"></span><br><span class="line">CMAKE_CURRENT_SOURCE_DIR</span><br><span class="line"></span><br><span class="line">CMAKE_MODULE_PATH</span><br><span class="line"></span><br><span class="line">EXECUTABLE_OUTPUT_PATH</span><br><span class="line"></span><br><span class="line">LIBRARY_OUTPUT_PATH</span><br><span class="line"></span><br><span class="line">PROJECT_NAME</span><br></pre></td></tr></table></figure></li>
+<li>Commands:<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// setup <span class="keyword">project</span> name <span class="keyword">and</span> supported progamming language</span><br><span class="line"><span class="keyword">project</span>(projectname [CXX] [C] [Java])</span><br><span class="line"></span><br><span class="line">// setup the supported cmake version </span><br><span class="line"><span class="keyword">CMAKE_MINIMUM_REQUIRED</span>(VERSION versionNumber [FATAL_ERROR])</span><br><span class="line"></span><br><span class="line">// setup variables</span><br><span class="line"><span class="keyword">SET</span>(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</span><br><span class="line"><span class="keyword">set</span>(EXECUTABLE_OUTPUT_PATH <span class="variable">$&#123;PROJECT_BINARY_DIR&#125;</span>/bin)</span><br><span class="line"></span><br><span class="line">// find all source code files <span class="keyword">and</span> make them into a <span class="keyword">list</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(dir VARIABLE)</span><br><span class="line"></span><br><span class="line">// add subdirectory to the build</span><br><span class="line"><span class="keyword">add_subdirectory</span>(source_dir [binary_dir][EXCLUDE_FROM_ALL])</span><br><span class="line"></span><br><span class="line">// find head files</span><br><span class="line"><span class="keyword">include_directories</span>([AFTER|BEFORE] [SYSTEM] dir1 dir2 ...)</span><br><span class="line"></span><br><span class="line">// Adds an executable <span class="keyword">target</span> called &lt;name&gt; to be built from the source files listed</span><br><span class="line"><span class="keyword">add_executable</span>(&lt;name&gt; [source1] [source2 ...])</span><br><span class="line"></span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2>[1] <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/CMake">CMake Wiki</a> <br>[2] <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19686223/what-are-the-benefits-purposes-of-cmake">What are the benefits/purposes of cmake?</a> <br>[3] <a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/index.html#">CMake Documentation</a></li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/adskenlin">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/kenlin93">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://adskenlin.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

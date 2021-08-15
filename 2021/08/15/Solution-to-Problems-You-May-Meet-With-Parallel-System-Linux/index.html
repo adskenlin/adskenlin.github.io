@@ -164,6 +164,9 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Solution: </span><br><span class="line">1. when you see &quot;install Ubuntu&quot; etc.. (GRUB) press &quot;e&quot; quickly! </span><br><span class="line">2. Edit: Replace &quot;quiet splash&quot; to &quot;nomodeset&quot; and press F10 to boot.</span><br><span class="line">3. After installation done, and reboot.</span><br><span class="line">4. At the same place(GRUB), press &quot;e&quot; and in the line that starts with &quot;linux&quot;, add &quot;nouveau.modeset=0&quot; at the end of that line. </span><br><span class="line">5. When you successfully enter Ubuntu, use Software and Update to install Nvidia Driver.</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>Connect Window’s Disk in Ubuntu:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line">1. with `sudo fdisk -l` you could get an overview of all disk partitions.</span><br><span class="line">2. mark the name of device used by your windows disk, e.g. /dev/sda2.</span><br><span class="line">3. `sudo gedit /etc/fstab`</span><br><span class="line">4. add a line at the end with e.g.</span><br><span class="line">`/dev/sda2  /media/Data`</span><br><span class="line">5. the device would be able to visited through `/media/Data` in your ubuntu system</span><br></pre></td></tr></table></figure></li>
+</ul>
 
         
         <br />

@@ -11,7 +11,7 @@
 
     <title>
         
-        About - Ken&#39;s TechBlog
+        Solution to Problems You May Meet With Parallel System Ubuntu - Ken&#39;s TechBlog
         
     </title>
 
@@ -75,7 +75,7 @@
                     <span>ARCHIVES</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
                     <span>ABOUT</span>
@@ -91,6 +91,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-Steps-to-Install-Linux-Ubuntu"><span class="toc-text">Normal Steps to Install Linux(Ubuntu)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems"><span class="toc-text">Problems</span></a></li></ol>
+</div>
     
 </div>
 
@@ -116,19 +120,60 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-content no-indent">
-    <ul>
-<li>Chinese, born in WenZhou, PRC.</li>
-<li>Live in Stuttgart, Germany.</li>
-<li>(2021)Master of Science graduated from KIT.</li>
-<li>Fields: Programming, Autonomous Driving, ADAS</li>
-<li>Contact: <a href="mailto:&#107;&#x65;&#x6e;&#46;&#x6c;&#105;&#x6e;&#x30;&#52;&#49;&#54;&#64;&#121;&#x61;&#x68;&#x6f;&#111;&#46;&#99;&#111;&#x6d;">&#107;&#x65;&#x6e;&#46;&#x6c;&#105;&#x6e;&#x30;&#52;&#49;&#54;&#64;&#121;&#x61;&#x68;&#x6f;&#111;&#46;&#99;&#111;&#x6d;</a></li>
-</ul>
 
-    
-    <div id="comment-container">
+
+<div class="post-container">
+    <div class="post-title">
+        Solution to Problems You May Meet With Parallel System Ubuntu
     </div>
-    <div id="lv-container">
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-08-15 03:34:13</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>This article collects the problems I met while I was installing Ubuntu and using Ubuntu at the beginning.</p>
+<h2 id="Normal-Steps-to-Install-Linux-Ubuntu"><a href="#Normal-Steps-to-Install-Linux-Ubuntu" class="headerlink" title="Normal Steps to Install Linux(Ubuntu)"></a>Normal Steps to Install Linux(Ubuntu)</h2><ul>
+<li>Download Ubuntu from <a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop">official website</a>.</li>
+<li>Burn the .msi to your U-Disk with <a target="_blank" rel="noopener" href="http://rufus.ie/en/">Rufus</a>.</li>
+<li>Prapare the Disk partition for Ubuntu System:<br>Windows’ Disk Management -&gt; Right Click on your available Disk -&gt; Shrink Volume… -&gt; Set the space -&gt; Shrink</li>
+<li>Turn off Win10 Quick Start</li>
+<li>Restart the PC, stick your U-Disk, go to BIOS Setting</li>
+<li>Choose “UEFI: USB Flash Disk” in start menu</li>
+<li>Choose “Install Ubuntu”</li>
+<li>Finish Installation and restart</li>
+<li>If your PC automatically use Windows, go to BIOS Setting again and choose ubuntu to start</li>
+</ul>
+<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><ul>
+<li>When you switch your system, the system time will be incorrect:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// Solution: Change UTC=yes to UTC=no <span class="keyword">in</span> Linux </span><br><span class="line">// <span class="built_in">type</span> <span class="keyword">in</span> cmd:</span><br><span class="line">timedatectl set-local-rtc 1 --adjust-system-clock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Installation freezes at the start and show checking nvidia driver:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Solution: </span><br><span class="line">1. when you see &quot;install Ubuntu&quot; etc.. (GRUB) press &quot;e&quot; quickly! </span><br><span class="line">2. Edit: Replace &quot;quiet splash&quot; to &quot;nomodeset&quot; and press F10 to boot.</span><br><span class="line">3. After installation done, and reboot.</span><br><span class="line">4. At the same place(GRUB), press &quot;e&quot; and in the line that starts with &quot;linux&quot;, add &quot;nouveau.modeset=0&quot; at the end of that line. </span><br><span class="line">5. When you successfully enter Ubuntu, use Software and Update to install Nvidia Driver.</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
     </div>
 </div>
 
@@ -186,7 +231,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 

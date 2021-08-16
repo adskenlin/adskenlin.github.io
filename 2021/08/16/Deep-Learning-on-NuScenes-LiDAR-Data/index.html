@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Deep Learning on LiDAR Data P1-Dataset - Ken&#39;s TechBlog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> write something </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/imgs/panda.jpeg" />
+        </div>
+        <div class="name">
+            <i>Ken Lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-NuScenes-Dataset-Introduction"><span class="toc-text">P1 - NuScenes Dataset Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-NuScenes"><span class="toc-text">Why NuScenes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toolkit-Devkit-Installation"><span class="toc-text">Toolkit(Devkit) Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data-Format-and-Usage"><span class="toc-text">Data Format and Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> write something </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Deep Learning on LiDAR Data P1-Dataset
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-08-16 09:38:16</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#NuScenes" title="NuScenes">NuScenes</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#LiDAR" title="LiDAR">LiDAR</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="P1-NuScenes-Dataset-Introduction"><a href="#P1-NuScenes-Dataset-Introduction" class="headerlink" title="P1 - NuScenes Dataset Introduction"></a>P1 - NuScenes Dataset Introduction</h1><h2 id="Why-NuScenes"><a href="#Why-NuScenes" class="headerlink" title="Why NuScenes?"></a>Why NuScenes?</h2><p>With increasing inverstment in fields of autonomous driving, tech-companies are creating their own dataset for training their autonomous vehicles. Some of them, like Waymo Dataset, Lyft L5 Dataset and NuScenes Data are widely used in personal uncommercial reasearchs because of their open-source and mutimodal features.</p>
+<p>NuScenes Dataset as one of the earliest published dataset in this field contains various kinds of data collected by different sensors such as cameras, radar and LiDARs. It provides toolkit to help researchers better get an overview and learn to process the data. And Lyft L5 Dataset also uses similiar toolkit as NuScenes.</p>
+<p>The main reason, which persuade me starting with NuScenes is, the size of dataset. Since we are focusing on deep learning with LiDAR data, the most important factors of dataset is the number of LiDAR frames, annotated 3D boxes, different driving scenes. </p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Scenes</th>
+<th>Size</th>
+<th>PCs lidar</th>
+<th>Ann.Frames</th>
+<th>3D boxes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NuScenes</td>
+<td>1k</td>
+<td>5.5hr</td>
+<td>400k</td>
+<td>40k</td>
+<td>1.4M</td>
+</tr>
+<tr>
+<td>Lyft L5</td>
+<td>366</td>
+<td>2.5hr</td>
+<td>46k</td>
+<td>46k</td>
+<td>1.3M</td>
+</tr>
+<tr>
+<td>Waymo Open</td>
+<td>1k</td>
+<td>5.5hr</td>
+<td>200k</td>
+<td>200k</td>
+<td>12M</td>
+</tr>
+</tbody></table>
+<p>NuScenes has a larger data size comparing to Lyft L5, and has a easy-to-use toolkit comparing to Waymo Dataset. But for training a neural network, the more data we have, the better performance we could achieve. I mean starting with NuScenes should be the best way.</p>
+<h2 id="Toolkit-Devkit-Installation"><a href="#Toolkit-Devkit-Installation" class="headerlink" title="Toolkit(Devkit) Installation"></a>Toolkit(Devkit) Installation</h2><p>Devkit provides us various functions to extract the specific data format and data information from dataset. It also contains different matricies for evaluating NN(Neural Network)’s performance with respect to your goals such as prediction, detecton and so on.</p>
+<ul>
+<li>visit <a target="_blank" rel="noopener" href="https://www.nuscenes.org/">official website</a> and account registration</li>
+<li>Download Full dataset(v1.0): Trainval and Test Set</li>
+<li>Devkit Installation (for more information please visit their <a target="_blank" rel="noopener" href="https://github.com/nutonomy/nuscenes-devkit">github</a>)<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># under Ubuntu or MacOS</span></span><br><span class="line"><span class="comment"># if you do not have python 3.6/3.7</span></span><br><span class="line"><span class="comment"># install python first</span></span><br><span class="line">sudo apt install python-pip</span><br><span class="line">sudo add-apt-repository ppa:deadsnakes/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install python3.7</span><br><span class="line">sudo apt-get install python3.7-dev</span><br><span class="line"><span class="comment"># then create virtual environment via conda or virtualenvwrapper</span></span><br><span class="line"><span class="comment"># if you do not have miniconda, google and install it</span></span><br><span class="line"><span class="comment"># after miniconda installed</span></span><br><span class="line">conda create --name deep-learning-nuscenes python=3.7</span><br><span class="line">conda activate deep-learning-nuscenes</span><br><span class="line"><span class="comment"># to deactivate env, use `source deactivate`</span></span><br><span class="line"><span class="comment"># then use</span></span><br><span class="line">pip install nuscenes-devkit</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li>Verify the installation and follow the tutorials <a target="_blank" rel="noopener" href="https://www.nuscenes.org/nuscenes?tutorial=nuscenes">here</a>.</li>
+</ul>
+<h2 id="Data-Format-and-Usage"><a href="#Data-Format-and-Usage" class="headerlink" title="Data Format and Usage"></a>Data Format and Usage</h2><p>From tutorial you could see that there are many kinds of data formats in dataset such as <code>sample</code>, <code>sample_data</code>, <code>sample_annotation</code> and so on, but not all of them are useful for us. In this part, I would like to introduce the data, which is important for our focus.</p>
+<p>What kind of LiDAR data do we need for deep learning? An example of senor data processing from SOTA methods like Center-Net, MultiXNet shows the pipeline as follows: <br><img src="../imgs/lidardata_pipeline.PNG" alt="LiDAR Data Pipeline"></p>
+<p>Many experiments show that aggregation of several frames of LiDAR point clouds would enhance the perception performance of neural network, because one single frame of LiDAR point cloud doesn’t contain enough information. From this point, we could decide, that we should extract successive frames of LiDAR point clouds and their annotation as well from dataset.</p>
+<p>From the tutorial, we could know sample means one frame, sample_data contains all sensor data of one frame, use devkit we could extract the LiDAR information specifically from sample_data. The LiDAR information here contains the path of LiDAR point cloud, annotations(annotated Objects) in this single frame.</p>
+<p>Basically, in one frame of LiDAR data we need to have:</p>
+<ul>
+<li>LiDAR Sweeps: Point clouds(Location X,Y,Z,Intensity,Ring Index)</li>
+<li>Annotations: Annotated Object Boxes(Location, dimension, Rotation, Velocity, Name of Object and so on)</li>
+</ul>
+<p>Now we know what kind of data we need, in next part I’d like to ‘introduce data extraction pipeline for LiDAR data.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1903.11027.pdf">nuScenes: A multimodal dataset for autonomous driving</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2006.11275.pdf">Center-based 3D Object Detection and Tracking</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/adskenlin">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/kenlin93">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

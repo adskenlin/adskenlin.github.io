@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        MMDetection3D: Deep Learning Codebase for 3D LiDAR Data - P1 - Ken&#39;s TechBlog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> write something </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/imgs/panda.jpeg" />
+        </div>
+        <div class="name">
+            <i>Ken Lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Look-into-Codes"><span class="toc-text">Look into Codes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Configs"><span class="toc-text">What is Configs?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-mmdet3d"><span class="toc-text">What is mmdet3d?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-tools"><span class="toc-text">What is tools?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-coming-NEXT"><span class="toc-text">What’s coming NEXT</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> write something </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        MMDetection3D: Deep Learning Codebase for 3D LiDAR Data - P1
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-09-07 21:09:30</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#LiDAR" title="LiDAR">LiDAR</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Point Cloud Data" title="Point Cloud Data">Point Cloud Data</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>MMDetection3D is an open-source object detection codebase tool based on PyTorch. It’s a project developed by MMLab, which has published several famous toolboxes e.g. MMDetection, MMsegmentation and so on. </p>
+<p>For more information, please visit their <a target="_blank" rel="noopener" href="https://github.com/open-mmlab/mmdetection3d">official github repo</a>. In this blog, I would like to introduce this toolbox and explain how it works from its source code.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>This toolbox was built focusing on 3D object detection tasks. If you’ve heard about <code>mmdetection</code> of Openmmlab, you could think this repo as an 3D-extension of basic <code>mmdetection</code>. It is built based on <code>mmdetection</code> and <code>mmcv</code>, and it use nearly same mechanism and coding-style as <code>mmdetection</code>.</p>
+<p>I would highly recommend this toolbox for 3D Object Detection, since it has everything we need in this field and it works much more efficient than your own hand-written codes. Reasons:</p>
+<ul>
+<li><p>It provides functions and built-in dataset classes to process raw 3D Data no matter it’s from NuScenes, Lyft or Waymo.</p>
+</li>
+<li><p>It provides a huge number of functions from SOTA methods for processing point cloud data, anchors, bounding boxes, which we may use during our pre-processing step.</p>
+</li>
+<li><p>It contains various operations and their functions, which we may use in different parts of network, such as spare 3D convolution, iou3D calculation.</p>
+</li>
+<li><p>while designing architecture, it provides us various sub-architectures for ablation study. e.g. in different parts of network, such as in <code>backbone</code>, <code>Neck</code>, <code>Head</code>, it provides the architectures from many SOTA methods.</p>
+</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Follow the steps <a target="_blank" rel="noopener" href="https://github.com/open-mmlab/mmdetection3d/blob/master/docs/getting_started.md">here</a>. One thing you need to pay attention is, that the version of mmcv, python, pytorch and mmdetection should match. I was stucking in a problem for a long time, which causes the last installtion step <code>pip install -v -e .</code> failed. Because I have multiple CUDA versions(e.g 10.1, 11.2) installed and it does not match the pytorch version I used.</p>
+<h2 id="Look-into-Codes"><a href="#Look-into-Codes" class="headerlink" title="Look into Codes"></a>Look into Codes</h2><p>You could see many folders in <code>/mmdetection3d</code>. I would like sort them in 3 levels:</p>
+<ul>
+<li><p>Sure to use: <code>configs</code>, <code>mmdet3d</code>,  <code>tools</code></p>
+</li>
+<li><p>May use: <code>data</code>, <code>tests</code></p>
+</li>
+<li><p>not relevant: <code>others</code></p>
+</li>
+</ul>
+<h3 id="What-is-Configs"><a href="#What-is-Configs" class="headerlink" title="What is Configs?"></a>What is Configs?</h3><p>In <code>configs</code>, you will have to create the config file for your deep learning methods, which should include the information of dataset setup, neural network architecture, training and validation parameters optimization and so on.</p>
+<p>The basic mechanism of this toolbox is, that it has set up all the definitions, parameters in its registry module. When you want to use one of them, you only have to write it in config file and it will be called up automatically. </p>
+<p>To explain it clearly, let’s look into an example, Centerpoint: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># read basic config files of different parts</span></span><br><span class="line"><span class="comment"># for dataset, use nus-3d.py as default</span></span><br><span class="line"><span class="comment"># for network architecture, use centerpoint_01voxel_second_secfpn_nus.py as default</span></span><br><span class="line"><span class="comment"># for training params and runtime setup, use cyclic_20e.py and default_runtime.py as default</span></span><br><span class="line">_base_ = [</span><br><span class="line">    <span class="string">&#x27;../_base_/datasets/nus-3d.py&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;../_base_/models/centerpoint_01voxel_second_secfpn_nus.py&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;../_base_/schedules/cyclic_20e.py&#x27;</span>, <span class="string">&#x27;../_base_/default_runtime.py&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># In the following part you have to set up the parameters</span></span><br><span class="line"><span class="comment"># which should overwrite the default values</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># in this part,</span></span><br><span class="line"><span class="comment"># point_cloud_range and class_names are common params</span></span><br><span class="line"><span class="comment"># they may be used not only in dataset, </span></span><br><span class="line"><span class="comment"># and also in models and training loops</span></span><br><span class="line">point_cloud_range = [-<span class="number">51.2</span>, -<span class="number">51.2</span>, -<span class="number">5.0</span>, <span class="number">51.2</span>, <span class="number">51.2</span>, <span class="number">3.0</span>]</span><br><span class="line">class_names = [</span><br><span class="line">    <span class="string">&#x27;car&#x27;</span>, <span class="string">&#x27;truck&#x27;</span>, <span class="string">&#x27;construction_vehicle&#x27;</span>, <span class="string">&#x27;bus&#x27;</span>, <span class="string">&#x27;trailer&#x27;</span>, <span class="string">&#x27;barrier&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;motorcycle&#x27;</span>, <span class="string">&#x27;bicycle&#x27;</span>, <span class="string">&#x27;pedestrian&#x27;</span>, <span class="string">&#x27;traffic_cone&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># in this part,</span></span><br><span class="line"><span class="comment"># the params for setting up a model will be partially overwritten</span></span><br><span class="line">model = <span class="built_in">dict</span>(</span><br><span class="line">    pts_voxel_layer=<span class="built_in">dict</span>(point_cloud_range=point_cloud_range),</span><br><span class="line">    pts_bbox_head=<span class="built_in">dict</span>(bbox_coder=<span class="built_in">dict</span>(pc_range=point_cloud_range[:<span class="number">2</span>])),</span><br><span class="line">    train_cfg=<span class="built_in">dict</span>(pts=<span class="built_in">dict</span>(point_cloud_range=point_cloud_range)),</span><br><span class="line">    test_cfg=<span class="built_in">dict</span>(pts=<span class="built_in">dict</span>(pc_range=point_cloud_range[:<span class="number">2</span>])))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># in this part,</span></span><br><span class="line"><span class="comment"># there are definitions about dataset, data path,</span></span><br><span class="line"><span class="comment"># database sampler, preprocessing pipeline for training and testing,</span></span><br><span class="line"><span class="comment"># they are necessary for setting up a dataset object</span></span><br><span class="line">dataset_type = <span class="string">&#x27;NuScenesDataset&#x27;</span></span><br><span class="line">data_root = <span class="string">&#x27;data/nuscenes/&#x27;</span></span><br><span class="line">file_client_args = <span class="built_in">dict</span>(backend=<span class="string">&#x27;disk&#x27;</span>)</span><br><span class="line"></span><br><span class="line">db_sampler = <span class="built_in">dict</span>(</span><br><span class="line">    data_root=data_root,</span><br><span class="line">    info_path=data_root + <span class="string">&#x27;nuscenes_dbinfos_train.pkl&#x27;</span>,</span><br><span class="line">    rate=<span class="number">1.0</span>,</span><br><span class="line">    prepare=<span class="built_in">dict</span>(</span><br><span class="line">        filter_by_difficulty=[-<span class="number">1</span>],</span><br><span class="line">        filter_by_min_points=<span class="built_in">dict</span>(</span><br><span class="line">            car=<span class="number">5</span>,</span><br><span class="line">            truck=<span class="number">5</span>,</span><br><span class="line">            bus=<span class="number">5</span>,</span><br><span class="line">            trailer=<span class="number">5</span>,</span><br><span class="line">            construction_vehicle=<span class="number">5</span>,</span><br><span class="line">            traffic_cone=<span class="number">5</span>,</span><br><span class="line">            barrier=<span class="number">5</span>,</span><br><span class="line">            motorcycle=<span class="number">5</span>,</span><br><span class="line">            bicycle=<span class="number">5</span>,</span><br><span class="line">            pedestrian=<span class="number">5</span>)),</span><br><span class="line">    classes=class_names,</span><br><span class="line">    sample_groups=<span class="built_in">dict</span>(</span><br><span class="line">        car=<span class="number">2</span>,</span><br><span class="line">        truck=<span class="number">3</span>,</span><br><span class="line">        construction_vehicle=<span class="number">7</span>,</span><br><span class="line">        bus=<span class="number">4</span>,</span><br><span class="line">        trailer=<span class="number">6</span>,</span><br><span class="line">        barrier=<span class="number">2</span>,</span><br><span class="line">        motorcycle=<span class="number">6</span>,</span><br><span class="line">        bicycle=<span class="number">6</span>,</span><br><span class="line">        pedestrian=<span class="number">2</span>,</span><br><span class="line">        traffic_cone=<span class="number">2</span>),</span><br><span class="line">    points_loader=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromFile&#x27;</span>,</span><br><span class="line">        coord_type=<span class="string">&#x27;LIDAR&#x27;</span>,</span><br><span class="line">        load_dim=<span class="number">5</span>,</span><br><span class="line">        use_dim=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        file_client_args=file_client_args))</span><br><span class="line"></span><br><span class="line">train_pipeline = [</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromFile&#x27;</span>,</span><br><span class="line">        coord_type=<span class="string">&#x27;LIDAR&#x27;</span>,</span><br><span class="line">        load_dim=<span class="number">5</span>,</span><br><span class="line">        use_dim=<span class="number">5</span>,</span><br><span class="line">        file_client_args=file_client_args),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromMultiSweeps&#x27;</span>,</span><br><span class="line">        sweeps_num=<span class="number">9</span>,</span><br><span class="line">        use_dim=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        file_client_args=file_client_args,</span><br><span class="line">        pad_empty_sweeps=<span class="literal">True</span>,</span><br><span class="line">        remove_close=<span class="literal">True</span>),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;LoadAnnotations3D&#x27;</span>, with_bbox_3d=<span class="literal">True</span>, with_label_3d=<span class="literal">True</span>),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;ObjectSample&#x27;</span>, db_sampler=db_sampler),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;GlobalRotScaleTrans&#x27;</span>,</span><br><span class="line">        rot_range=[-<span class="number">0.3925</span>, <span class="number">0.3925</span>],</span><br><span class="line">        scale_ratio_range=[<span class="number">0.95</span>, <span class="number">1.05</span>],</span><br><span class="line">        translation_std=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;RandomFlip3D&#x27;</span>,</span><br><span class="line">        sync_2d=<span class="literal">False</span>,</span><br><span class="line">        flip_ratio_bev_horizontal=<span class="number">0.5</span>,</span><br><span class="line">        flip_ratio_bev_vertical=<span class="number">0.5</span>),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;PointsRangeFilter&#x27;</span>, point_cloud_range=point_cloud_range),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;ObjectRangeFilter&#x27;</span>, point_cloud_range=point_cloud_range),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;ObjectNameFilter&#x27;</span>, classes=class_names),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;PointShuffle&#x27;</span>),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;DefaultFormatBundle3D&#x27;</span>, class_names=class_names),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;Collect3D&#x27;</span>, keys=[<span class="string">&#x27;points&#x27;</span>, <span class="string">&#x27;gt_bboxes_3d&#x27;</span>, <span class="string">&#x27;gt_labels_3d&#x27;</span>])</span><br><span class="line">]</span><br><span class="line">test_pipeline = [</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromFile&#x27;</span>,</span><br><span class="line">        coord_type=<span class="string">&#x27;LIDAR&#x27;</span>,</span><br><span class="line">        load_dim=<span class="number">5</span>,</span><br><span class="line">        use_dim=<span class="number">5</span>,</span><br><span class="line">        file_client_args=file_client_args),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromMultiSweeps&#x27;</span>,</span><br><span class="line">        sweeps_num=<span class="number">9</span>,</span><br><span class="line">        use_dim=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        file_client_args=file_client_args,</span><br><span class="line">        pad_empty_sweeps=<span class="literal">True</span>,</span><br><span class="line">        remove_close=<span class="literal">True</span>),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;MultiScaleFlipAug3D&#x27;</span>,</span><br><span class="line">        img_scale=(<span class="number">1333</span>, <span class="number">800</span>),</span><br><span class="line">        pts_scale_ratio=<span class="number">1</span>,</span><br><span class="line">        flip=<span class="literal">False</span>,</span><br><span class="line">        transforms=[</span><br><span class="line">            <span class="built_in">dict</span>(</span><br><span class="line">                <span class="built_in">type</span>=<span class="string">&#x27;GlobalRotScaleTrans&#x27;</span>,</span><br><span class="line">                rot_range=[<span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                scale_ratio_range=[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">                translation_std=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]),</span><br><span class="line">            <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;RandomFlip3D&#x27;</span>),</span><br><span class="line">            <span class="built_in">dict</span>(</span><br><span class="line">                <span class="built_in">type</span>=<span class="string">&#x27;PointsRangeFilter&#x27;</span>, point_cloud_range=point_cloud_range),</span><br><span class="line">            <span class="built_in">dict</span>(</span><br><span class="line">                <span class="built_in">type</span>=<span class="string">&#x27;DefaultFormatBundle3D&#x27;</span>,</span><br><span class="line">                class_names=class_names,</span><br><span class="line">                with_label=<span class="literal">False</span>),</span><br><span class="line">            <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;Collect3D&#x27;</span>, keys=[<span class="string">&#x27;points&#x27;</span>])</span><br><span class="line">        ])</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">eval_pipeline = [</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromFile&#x27;</span>,</span><br><span class="line">        coord_type=<span class="string">&#x27;LIDAR&#x27;</span>,</span><br><span class="line">        load_dim=<span class="number">5</span>,</span><br><span class="line">        use_dim=<span class="number">5</span>,</span><br><span class="line">        file_client_args=file_client_args),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;LoadPointsFromMultiSweeps&#x27;</span>,</span><br><span class="line">        sweeps_num=<span class="number">9</span>,</span><br><span class="line">        use_dim=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        file_client_args=file_client_args,</span><br><span class="line">        pad_empty_sweeps=<span class="literal">True</span>,</span><br><span class="line">        remove_close=<span class="literal">True</span>),</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;DefaultFormatBundle3D&#x27;</span>,</span><br><span class="line">        class_names=class_names,</span><br><span class="line">        with_label=<span class="literal">False</span>),</span><br><span class="line">    <span class="built_in">dict</span>(<span class="built_in">type</span>=<span class="string">&#x27;Collect3D&#x27;</span>, keys=[<span class="string">&#x27;points&#x27;</span>])</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">data = <span class="built_in">dict</span>(</span><br><span class="line">    train=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=<span class="string">&#x27;CBGSDataset&#x27;</span>,</span><br><span class="line">        dataset=<span class="built_in">dict</span>(</span><br><span class="line">            <span class="built_in">type</span>=dataset_type,</span><br><span class="line">            data_root=data_root,</span><br><span class="line">            ann_file=data_root + <span class="string">&#x27;nuscenes_infos_train.pkl&#x27;</span>,</span><br><span class="line">            pipeline=train_pipeline,</span><br><span class="line">            classes=class_names,</span><br><span class="line">            test_mode=<span class="literal">False</span>,</span><br><span class="line">            use_valid_flag=<span class="literal">True</span>,</span><br><span class="line">            box_type_3d=<span class="string">&#x27;LiDAR&#x27;</span>)),</span><br><span class="line">    val=<span class="built_in">dict</span>(pipeline=test_pipeline, classes=class_names),</span><br><span class="line">    test=<span class="built_in">dict</span>(pipeline=test_pipeline, classes=class_names))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># In this part,</span></span><br><span class="line"><span class="comment"># some params in runtime or training loop will be overwritten</span></span><br><span class="line">evaluation = <span class="built_in">dict</span>(interval=<span class="number">20</span>, pipeline=eval_pipeline)</span><br></pre></td></tr></table></figure>
+
+<p>To draw a conclusion, the <code>configs</code> is where we define our network. We could use pre-defined definition or built-in functions to build up our neural network. If you think up a parameter or architecture which does not exist in toolbox, you could also registry them in next part <code>mmdet3d</code>.</p>
+<h3 id="What-is-mmdet3d"><a href="#What-is-mmdet3d" class="headerlink" title="What is mmdet3d?"></a>What is mmdet3d?</h3><p><code>mmdet3d</code> is the place where you could find and fetch your screwdriver. Under it, there are: <code>apis</code>, <code>core</code>, <code>dataset</code>, <code>models</code>, <code>ops</code>, <code>utils</code>.</p>
+<ul>
+<li><p>In <code>apis</code> you could find the simple api-codes for training, testing and inference. </p>
+</li>
+<li><p>In <code>core</code> you could find many pre-defined tools, which may be helpful in your research. E.g. <code>Anchor3DRangeGenerator</code> defines the method object to generate anchors. (for anchor-based methods, anchors could be generated in different ways)  </p>
+</li>
+<li><p>In <code>dataset</code> and <code>models</code> it provides various dataset/model options for your neural network. E.g. for models, you could choose ResNet as <code>backbone</code>, FPN as <code>neck</code>, anchor3dhead as <code>tast_heads</code>, and combine them as your network architecture.</p>
+</li>
+<li><p>In <code>ops</code> it provides many functions for data processing. E.g. Sparse 3D Convolution as an option of processing method for voxelized space.</p>
+</li>
+</ul>
+<p>If you want to design your own methods or architectures, you could just put the codes in corresponding folders and add your design to registry module. The toolbox could then fetch your self-designed object easily.</p>
+<h3 id="What-is-tools"><a href="#What-is-tools" class="headerlink" title="What is tools?"></a>What is tools?</h3><p>In <code>tools</code>, it provides us codes for creating database, training, testing, parallel training with multi-GPUs or multi-workstations and so on. </p>
+<p>To be brief, you define your neural network and training loop in <code>configs</code> and run it with the codes in <code>tools</code>.</p>
+<h2 id="What’s-coming-NEXT"><a href="#What’s-coming-NEXT" class="headerlink" title="What’s coming NEXT"></a>What’s coming NEXT</h2><p>In my next blog ‘MMDetection3D: Deep Learning Codebase for 3D LiDAR Data - P2’, we will introduce the details of training in MMDetection3D.</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/adskenlin">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/kenlin93">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

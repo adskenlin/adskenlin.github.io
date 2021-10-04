@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Basic and Advanced Git - Ken&#39;s TechBlog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> write something </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/imgs/panda.jpeg" />
+        </div>
+        <div class="name">
+            <i>Ken Lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips-and-Tricks"><span class="toc-text">Tips and Tricks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference:</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> write something </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Basic and Advanced Git
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-10-01 03:01:30</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Git" title="Git">Git</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p><strong>Git</strong> is version-control tool for tracking changes in files. It is widely used in software development project and It significantly increases the working efficient among teams and supports for distributed, non-linear workflows (thousands of parallel branches running on different systems). One thing more to mention, it was created by Linus Torvals (Genius!!!).</p>
+<p>This Blog is written for marking down the key points and tricks of git. It will keep updating!</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Follow the official websites to install git: <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a></p>
+<p>To verify the installation, use <code>git --version</code> in terminal, you should see the output <code>git version x.xx.x</code>.</p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up git configs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Identity</span></span><br><span class="line">git config --global user.name <span class="string">&quot;YOUR NAME&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;YOUR EMAIL&quot;</span></span><br><span class="line"><span class="comment"># 2. Default Branch Name</span></span><br><span class="line">git config --global init.defaultBranch main</span><br><span class="line"><span class="comment"># All Info</span></span><br><span class="line">git config --list </span><br></pre></td></tr></table></figure>
+
+<h2 id="Tips-and-Tricks"><a href="#Tips-and-Tricks" class="headerlink" title="Tips and Tricks"></a>Tips and Tricks</h2><ol>
+<li><p>If you want to create a git repository at local, try:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> YOUR_REPO</span><br><span class="line">git init</span><br></pre></td></tr></table></figure></li>
+<li><p>If you want to clone a git repo from remote(github, gitlab, etc.), try:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> YOUR_URL</span><br></pre></td></tr></table></figure></li>
+<li><p>The files in Git system could have 4 types: <strong>Untracked</strong>, <strong>Unmodified</strong>, <strong>Modified</strong>, <strong>Staged</strong>. </p>
+</li>
+<li><p>Check the status of all files:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">    modified:   CONTRIBUTING.md</span><br></pre></td></tr></table></figure>
+
+<p>As above shown, <code>git status</code> will output the current branch, files to be commited, files to add on stage, etc.</p>
+</li>
+<li><p>If you have some files that you do not want Git to add or track, use file named <code>.gitignore</code>, add the name of files.</p>
+</li>
+<li><p>View Changes:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br><span class="line">git diff --staged</span><br></pre></td></tr></table></figure></li>
+<li><p>Commit:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># open edit and commit</span></span><br><span class="line">git commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># one-line commit</span></span><br><span class="line">git commit -m <span class="string">&quot;YOUR COMMIT&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># skip add, one-line commit</span></span><br><span class="line">git commit -a -m <span class="string">&quot;YOUR COMMIT&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Remove files: <code>git rm FILE</code></p>
+</li>
+<li><p>Rename files (actually use move operation):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv old_file new_file</span><br></pre></td></tr></table></figure></li>
+<li><p>View commit history:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># normal log</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># limit the log content to n(2) lines</span></span><br><span class="line">git <span class="built_in">log</span> -p -2</span><br><span class="line"><span class="comment"># limit the log content w.r.t. time</span></span><br><span class="line">git <span class="built_in">log</span> --since=2.weeks</span><br><span class="line"><span class="comment"># show statistc of log</span></span><br><span class="line">git <span class="built_in">log</span> --<span class="built_in">stat</span></span><br><span class="line"><span class="comment"># specific formats for log</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">&quot;%h %s&quot;</span> --graph</span><br><span class="line"><span class="comment"># Very specific</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=<span class="string">&quot;%h - %s&quot;</span> --author=<span class="string">&#x27;Junio C Hamano&#x27;</span> --since=<span class="string">&quot;2008-10-01&quot;</span> \</span><br><span class="line">   --before=<span class="string">&quot;2008-11-01&quot;</span> --no-merges -- t/</span><br></pre></td></tr></table></figure></li>
+<li><p>Undoing Things:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># when you commit too early,</span></span><br><span class="line"><span class="comment"># still want to add some files then commit</span></span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure></li>
+<li><p>Unstaging a staged file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line"></span><br><span class="line">    renamed:    README.md -&gt; README</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line">git reset HEAD ...</span><br></pre></td></tr></table></figure></li>
+<li><p>Unmodifying a modified file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line">git checkout -- xxx.md</span><br></pre></td></tr></table></figure></li>
+<li><p><code>git restore</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># unstage a staged file</span></span><br><span class="line">git restore --staged &lt;file&gt;</span><br><span class="line"><span class="comment"># unmodifying a modified file</span></span><br><span class="line">git restore &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>Working with Remotes:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show remotes</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="comment"># add remotes</span></span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br><span class="line"><span class="comment"># Fetching and Pulling</span></span><br><span class="line">git fetch &lt;remote&gt;</span><br><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"><span class="comment"># show remote information</span></span><br><span class="line">git remote show origin</span><br><span class="line"><span class="comment"># rename and remove remotes</span></span><br><span class="line">git remote rename &lt;name1&gt; &lt;name2&gt;</span><br><span class="line">git remote rm &lt;name&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>Working with Tags:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list tags</span></span><br><span class="line">git tag</span><br><span class="line">git tag -l <span class="string">&quot;version-*&quot;</span></span><br><span class="line"><span class="comment"># create annotated tags</span></span><br><span class="line">git tag -a version -m <span class="string">&quot;commit for version&quot;</span></span><br><span class="line"><span class="comment"># create lightweight tags</span></span><br><span class="line">git tag version</span><br><span class="line"><span class="comment"># show tag</span></span><br><span class="line">git show tag_name</span><br><span class="line"><span class="comment"># add tag to an old version</span></span><br><span class="line">git tag -a version LOG_NUM</span><br><span class="line"><span class="comment"># git push will not transfer tags to remote servers by default</span></span><br><span class="line">git push origin &lt;tagname&gt;</span><br><span class="line">git push origin --tags</span><br><span class="line"><span class="comment"># delete tag</span></span><br><span class="line">git tag -d &lt;tagname&gt;</span><br><span class="line"><span class="comment"># check out tags</span></span><br><span class="line">git checkout &lt;tagname&gt;</span><br><span class="line"><span class="comment"># be careful with:</span></span><br><span class="line">git checkout -b &lt;branch&gt; &lt;tagname&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>Aliases:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.last <span class="string">&#x27;log -1 HEAD&#x27;</span></span><br><span class="line">git last</span><br></pre></td></tr></table></figure></li>
+<li><p>BASIC Branches:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create branch (but will not switch to it)</span></span><br><span class="line">git branch &lt;BranchName&gt;</span><br><span class="line"><span class="comment"># show the branch pointers info</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line"><span class="comment"># switch branches</span></span><br><span class="line">git checkout &lt;BranchName&gt;</span><br><span class="line"><span class="comment"># After some comments, the HEAD will move forward</span></span><br><span class="line"><span class="comment"># move HEAD back to master</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment"># show divergent history</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new branch and switch</span></span><br><span class="line">git checkout -b &lt;BranchName&gt;</span><br><span class="line"><span class="comment"># merge a branch, master will fast-forward to BranchName</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge &lt;BranchName&gt;</span><br><span class="line"><span class="comment"># then delete the BranchName because no more needed</span></span><br><span class="line">git branch -d &lt;BranchName&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># merge conflicts</span></span><br><span class="line">git merge &lt;BranchName&gt;</span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">Auto-merging index.html</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> index.html</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br><span class="line">git status</span><br><span class="line"><span class="comment"># ..., resolve the conflicts</span></span><br><span class="line"><span class="comment"># another graphical tool: git mergetool?</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Branches MANAGEMENT:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># about git branch</span></span><br><span class="line"><span class="comment"># see all branches and last commit on each branch</span></span><br><span class="line">git branch -v</span><br><span class="line"><span class="comment"># about merged/unmerged branch</span></span><br><span class="line">git branch --merged</span><br><span class="line">git branch --no-merged</span><br><span class="line"></span><br><span class="line"><span class="comment"># rename branch</span></span><br><span class="line">git branch --move old-name new-name</span><br><span class="line">git push --set-upstream origin new-name</span><br><span class="line"><span class="comment"># but now the old-name still exists at remote</span></span><br><span class="line"><span class="comment"># to delete</span></span><br><span class="line">git push origin --delete old-name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>REMOTE Branches:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># REMOTE: R0 &lt;- R1 &lt;- R2 </span></span><br><span class="line"><span class="comment">#                     |</span></span><br><span class="line"><span class="comment">#                    master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#             origin/master (remote branch)</span></span><br><span class="line"><span class="comment">#                    |</span></span><br><span class="line"><span class="comment"># LOCAL: R0 &lt;- R1 &lt;- R2</span></span><br><span class="line"><span class="comment">#                    |</span></span><br><span class="line"><span class="comment">#                   master (local branch)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># REMOTE: R0 &lt;- R1 &lt;- R2 &lt;- R3 &lt;- R4</span></span><br><span class="line"><span class="comment">#                                 |</span></span><br><span class="line"><span class="comment">#                               master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#             origin/master (remote branch)</span></span><br><span class="line"><span class="comment">#                    |</span></span><br><span class="line"><span class="comment"># LOCAL: R0 &lt;- R1 &lt;- R2 &lt;- L3 &lt;- L4</span></span><br><span class="line"><span class="comment">#                                |</span></span><br><span class="line"><span class="comment">#                              master (local branch)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git fetch &lt;remote&gt;</span></span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># After FETCH:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#                        origin/master (remote branch)</span></span><br><span class="line"><span class="comment">#                                |</span></span><br><span class="line"><span class="comment"># LOCAL: R0 &lt;- R1 &lt;- R2 &lt;- R3 &lt;- R4</span></span><br><span class="line"><span class="comment">#                    |</span></span><br><span class="line"><span class="comment">#                    &lt;- L3 &lt;- L4</span></span><br><span class="line"><span class="comment">#                             |</span></span><br><span class="line"><span class="comment">#                        master (local branch)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># IF THERE IS ANOTHER REMOTE:</span></span><br><span class="line"><span class="comment"># REMOTE_1: R0 &lt;- R1 &lt;- R2 &lt;- R3 &lt;- R4</span></span><br><span class="line"><span class="comment">#                       |</span></span><br><span class="line"><span class="comment">#                     master</span></span><br><span class="line"></span><br><span class="line">git fetch REMOTE_1</span><br><span class="line"></span><br><span class="line"><span class="comment">#           REMOTE_1/master     origin/master (REMOTE)</span></span><br><span class="line"><span class="comment">#                    |           |</span></span><br><span class="line"><span class="comment"># LOCAL: R0 &lt;- R1 &lt;- R2 &lt;- R3 &lt;- R4</span></span><br><span class="line"><span class="comment">#                    |</span></span><br><span class="line"><span class="comment">#                    &lt;- L3 &lt;- L4</span></span><br><span class="line"><span class="comment">#                             |</span></span><br><span class="line"><span class="comment">#                        master (local branch)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Push:</span></span><br><span class="line">git push &lt;remote&gt; &lt;LocalBranch&gt;:&lt;RemoteBranch&gt;</span><br><span class="line"><span class="comment"># or if you keep the name of branches</span></span><br><span class="line">git push &lt;remote&gt; &lt;Branch&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Tracking Branches and automatically pull from remote:</span></span><br><span class="line"><span class="comment"># create a new one, switch and track</span></span><br><span class="line">git checkout --track origin/branchname</span><br><span class="line"><span class="comment"># use the local one to track</span></span><br><span class="line">git branch -u origin/branchname</span><br><span class="line"></span><br><span class="line"><span class="comment"># fetch all and show</span></span><br><span class="line">git fetch --all; git branch -vv</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>Rebasing:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Integrate changes from one to another</span></span><br><span class="line"><span class="comment"># similar to MERGE</span></span><br><span class="line"><span class="comment"># if we have two divergent work: master, experiment</span></span><br><span class="line"><span class="comment"># switch to experiment</span></span><br><span class="line">git checkout experiment</span><br><span class="line"><span class="comment"># integrate experiment as the node next to master</span></span><br><span class="line">git rebase master</span><br><span class="line"><span class="comment"># switch to master</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment"># merge</span></span><br><span class="line">git merge experiment</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># There are 3 branches: master, server, client</span></span><br><span class="line"></span><br><span class="line">git rebase --onto master server client</span><br><span class="line">git checkout master</span><br><span class="line">git merge client</span><br><span class="line"><span class="comment"># git rebase &lt;basebranch&gt; &lt;topicbranch&gt;</span></span><br><span class="line">git rebase master server</span><br><span class="line">git checkout master</span><br><span class="line">git merge server</span><br><span class="line">git branch -d client</span><br><span class="line">git branch -d server</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ol>
+<li>13 Advanced (but useful) Git Technologies and Shortcuts <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ecK3EnyGD8o">https://www.youtube.com/watch?v=ecK3EnyGD8o</a></li>
+<li>Git Docs <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></li>
+<li>Git Wiki <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Git">https://en.wikipedia.org/wiki/Git</a></li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/adskenlin">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/kenlin93">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

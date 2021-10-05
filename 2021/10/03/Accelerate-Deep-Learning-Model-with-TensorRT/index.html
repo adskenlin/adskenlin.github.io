@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Accelerate Deep Learning Model with TensorRT - Ken&#39;s TechBlog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> write something </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/imgs/panda.jpeg" />
+        </div>
+        <div class="name">
+            <i>Ken Lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage-Properties-Practices"><span class="toc-text">Usage, Properties, Practices</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-Official-Samples"><span class="toc-text">a. Official Samples:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Python-Case-Study-MNIST-Model"><span class="toc-text">1. Python Case Study: MNIST_Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Python-Case-Study-EfficientDet-Object-Detecion"><span class="toc-text">2.  Python Case Study: EfficientDet Object Detecion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-C-Case-Study-MNIST-Model"><span class="toc-text">3. C++ Case Study: MNIST_Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-C-Case-Study-Object-Detection-with-Faster-R-CNN-SSD"><span class="toc-text">4. C++ Case Study: Object Detection with Faster R-CNN, SSD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Third-Party-Torch2trt"><span class="toc-text">b. Third Party: Torch2trt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Third-Party-TensorRTx"><span class="toc-text">c. Third Party: TensorRTx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-Third-Party-TensorRT-Pro"><span class="toc-text">d. Third Party: TensorRT_Pro</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> write something </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Accelerate Deep Learning Model with TensorRT
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2021-10-03 03:01:41</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#TensorRT" title="TensorRT">TensorRT</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>TensorRT is an SDK developed by NVIDIA that facilitates high performance machine learning inference. It could take an existing model build with a deep learning framework(PyTorch, Tensorflow) and build an engine. It optimises and accelerates the deep learning model via:</p>
+<ol>
+<li>Reduce Mixed Precision: Maximizes throughput by quantizing models to INT8 while preserving accuracy</li>
+<li>Layer and Tensor Fusion: Optimizes use of GPU memory and bandwidth by fusing nodes in a kernel</li>
+<li>Kernel Auto-Tuning: Selects best data layers and algorithms based on the target GPU platform</li>
+<li>Dynamic Tensor Memory: Minimizes memory footprint and reuses memory for tensors efficiently</li>
+<li>Multi-Stream Execution: Uses a scalable design to process multiple input streams in parallel</li>
+<li>Time Fusion: Optimizes recurrent neural networks over time steps with dynamically generated kernels</li>
+</ol>
+<p><strong>Devices</strong> with TensorRT available:</p>
+<ul>
+<li>Server class graphic cards such as A100, T4, V100 etc.</li>
+<li>Embedded Device such as AGX Xavier, TX2, Nano etc.</li>
+<li>PC class graphic cards such as 30-series, 20-series, 10-series, which depend on their compute capability.</li>
+</ul>
+<p><strong>Performance</strong>:</p>
+<p>The optimization depends on the type and size of model, and the type of graphic cards. GPU calculation is good in parallel and dense process, it performs very well for accelerating models with a large number of convolution layers and deconvolution layers, while it does not significantly optimise when there are lots of operations (reshape, gather, split etc.).</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
+<li><p>Account registration at <a target="_blank" rel="noopener" href="https://developer.nvidia.com/">nvidia</a></p>
+</li>
+<li><p>Download <a target="_blank" rel="noopener" href="https://developer.nvidia.com/tensorrt">TensorRT</a>:</p>
+<p>NVIDIA TensorRT 8.x Download: </p>
+<blockquote>
+<p>TensorRT 8.2 EA</p>
+<p>TensorRT 8.0 GA</p>
+<p>TensorRT 8.0 EA</p>
+<p>EA means early access, GA means general availability(stable version). It’s recommanded to download latest stable version for normal use.</p>
+</blockquote>
+<p>For TensorRT 8.0 GA, choose your version w.r.t. your CUDA version and OS. For example, <code>TensorRT 8.0.1 GA for Ubuntu 20.04 and CUDA 11.3 DEB local repo package</code>.</p>
+</li>
+<li><p>Install TensorRT:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">os=<span class="string">&quot;ubuntuxx04&quot;</span></span><br><span class="line">tag=<span class="string">&quot;cudax.x-trt8.x.x.x-yyyymmdd&quot;</span></span><br><span class="line">sudo dpkg -i nv-tensorrt-repo-<span class="variable">$&#123;os&#125;</span>-<span class="variable">$&#123;tag&#125;</span>_1-1_amd64.deb</span><br><span class="line">sudo apt-key add /var/nv-tensorrt-repo-<span class="variable">$&#123;os&#125;</span>-<span class="variable">$&#123;tag&#125;</span>/7fa2af80.pub</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install tensorrt</span><br><span class="line"></span><br><span class="line"><span class="comment"># if using Python 3.x, install python3-libnvinfer</span></span><br><span class="line">sudo apt-get install python3-libnvinfer-dev</span><br><span class="line"><span class="comment"># if use TensorRT with TensorFlow, install graphsurgeon-tf</span></span><br><span class="line">sudo apt-get install uff-converter-tf</span><br><span class="line"><span class="comment"># install ONNX graphsurgeon package if need</span></span><br><span class="line">sudo apt-get install onnx-graphsurgeon</span><br></pre></td></tr></table></figure></li>
+<li><p>Verify the installation</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l | grep TensorRT</span><br><span class="line"><span class="comment"># output example:</span></span><br><span class="line">ii  graphsurgeon-tf                                             8.0.1-1+cuda11.3                      amd64        GraphSurgeon <span class="keyword">for</span> TensorRT package</span><br><span class="line">ii  libnvinfer-bin                                              8.0.1-1+cuda11.3                      amd64        TensorRT binaries</span><br><span class="line">ii  libnvinfer-dev                                              8.0.1-1+cuda11.3                      amd64        TensorRT development libraries and headers</span><br><span class="line">ii  libnvinfer-doc                                              8.0.1-1+cuda11.3                      all          TensorRT documentation</span><br><span class="line">ii  libnvinfer-plugin-dev                                       8.0.1-1+cuda11.3                      amd64        TensorRT plugin libraries</span><br><span class="line">ii  libnvinfer-plugin8                                          8.0.1-1+cuda11.3                      amd64        TensorRT plugin libraries</span><br><span class="line">ii  libnvinfer-samples                                          8.0.1-1+cuda11.3                      all          TensorRT samples</span><br><span class="line">ii  libnvinfer8                                                 8.0.1-1+cuda11.3                      amd64        TensorRT runtime libraries</span><br><span class="line">ii  libnvonnxparsers-dev                                        8.0.1-1+cuda11.3                      amd64        TensorRT ONNX libraries</span><br><span class="line">ii  libnvonnxparsers8                                           8.0.1-1+cuda11.3                      amd64        TensorRT ONNX libraries</span><br><span class="line">ii  libnvparsers-dev                                            8.0.1-1+cuda11.3                      amd64        TensorRT parsers libraries</span><br><span class="line">ii  libnvparsers8                                               8.0.1-1+cuda11.3                      amd64        TensorRT parsers libraries</span><br><span class="line">ii  onnx-graphsurgeon                                           8.0.1-1+cuda11.3                      amd64        ONNX GraphSurgeon <span class="keyword">for</span> TensorRT package</span><br><span class="line">ii  python3-libnvinfer                                          8.0.1-1+cuda11.3                      amd64        Python 3 bindings <span class="keyword">for</span> TensorRT</span><br><span class="line">ii  python3-libnvinfer-dev                                      8.0.1-1+cuda11.3                      amd64        Python 3 development package <span class="keyword">for</span> TensorRT</span><br><span class="line">ii  tensorrt                                                    8.0.1.6-1+cuda11.3                    amd64        Meta package of TensorRT</span><br><span class="line">ii  uff-converter-tf                                            8.0.1-1+cuda11.3                      amd64        UFF converter <span class="keyword">for</span> TensorRT package</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>Install PyCUDA if needed:</p>
+<p><code>pip install &#39;pycuda&lt;2021.1&#39;</code></p>
+<p>Some features of PyCUDA include(source: NVIDIA TENSORRT documentation):                              </p>
+<ul>
+<li>Maps all of CUDA into Python.</li>
+<li>Enables run-time code generation (RTCG) for flexible, fast, automatically tuned codes.                              </li>
+<li>Added robustness: automatic management of object lifetimes, automatic error checking                              </li>
+<li>Added convenience: comes with ready-made on-GPU linear algebra, reduction, scan.                              </li>
+<li>Add-on packages for FFT and LAPACK available.</li>
+<li>Fast. Near-zero wrapping overhead. </li>
+</ul>
+</li>
+</ul>
+<h2 id="Usage-Properties-Practices"><a href="#Usage-Properties-Practices" class="headerlink" title="Usage, Properties, Practices"></a>Usage, Properties, Practices</h2><h3 id="a-Official-Samples"><a href="#a-Official-Samples" class="headerlink" title="a. Official Samples:"></a>a. Official Samples:</h3><p>There are lots of code samples in <a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/tensorrt/sample-support-guide/index.html">official documentation</a>. They contain the fields of Image Classification, Object Detection etc.  As we know, tensorrt has builtin parsers, including caffeparser, uffparser, onnxparser, etc.</p>
+<h3 id="1-Python-Case-Study-MNIST-Model"><a href="#1-Python-Case-Study-MNIST-Model" class="headerlink" title="1. Python Case Study: MNIST_Model"></a>1. Python Case Study: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/TensorRT/tree/master/samples/python/network_api_pytorch_mnist">MNIST_Model</a></h3><blockquote>
+<p>Transform Type: PyTorch Model ==&gt;&gt; TensorRT Engine</p>
+</blockquote>
+<h3 id="2-Python-Case-Study-EfficientDet-Object-Detecion"><a href="#2-Python-Case-Study-EfficientDet-Object-Detecion" class="headerlink" title="2.  Python Case Study: EfficientDet Object Detecion"></a>2.  Python Case Study: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/TensorRT/tree/master/samples/python/efficientdet#build-tensorrt-engine">EfficientDet Object Detecion</a></h3><blockquote>
+<p>Transform Type: TensorFlow Saved Model(UFF) ==&gt;&gt; ONNX ==&gt;&gt; TensorRT Engine</p>
+</blockquote>
+<h3 id="3-C-Case-Study-MNIST-Model"><a href="#3-C-Case-Study-MNIST-Model" class="headerlink" title="3. C++ Case Study: MNIST_Model"></a>3. C++ Case Study: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/TensorRT/tree/master/samples/sampleOnnxMNIST">MNIST_Model</a></h3><blockquote>
+<p>Transform Type:  ONNX ==&gt;&gt; TensorRT Engine</p>
+</blockquote>
+<h3 id="4-C-Case-Study-Object-Detection-with-Faster-R-CNN-SSD"><a href="#4-C-Case-Study-Object-Detection-with-Faster-R-CNN-SSD" class="headerlink" title="4. C++ Case Study: Object Detection with Faster R-CNN, SSD"></a>4. C++ Case Study: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/TensorRT/tree/master/samples/sampleFasterRCNN">Object Detection with Faster R-CNN</a>, <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/TensorRT/tree/master/samples/sampleSSD">SSD</a></h3><blockquote>
+<p>Transform Type: Caffe Model ==&gt;&gt; TensorRT Engine</p>
+</blockquote>
+<h3 id="b-Third-Party-Torch2trt"><a href="#b-Third-Party-Torch2trt" class="headerlink" title="b. Third Party: Torch2trt"></a>b. Third Party: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA-AI-IOT/torch2trt">Torch2trt</a></h3><p>A special repo <a target="_blank" rel="noopener" href="https://github.com/NVIDIA-AI-IOT/torch2trt">torch2trt</a> introduced a PyTorch to TensorRT converter with Python API. With this we could transform some light networks and deploy them on device like Jetson. The basic idea of this repo is to convert the basical operations such as pool, ReLU. It makes model building much more flexible, and help us design our own model. But in many cases, Python is not best case for deploying and PyTorch model is no more flexible across platforms and systems.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Conversion</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch2trt <span class="keyword">import</span> torch2trt</span><br><span class="line"><span class="keyword">from</span> torchvision.models.alexnet <span class="keyword">import</span> alexnet</span><br><span class="line"></span><br><span class="line"><span class="comment"># create some regular pytorch model...</span></span><br><span class="line">model = alexnet(pretrained=<span class="literal">True</span>).<span class="built_in">eval</span>().cuda()</span><br><span class="line"></span><br><span class="line"><span class="comment"># create example data</span></span><br><span class="line">x = torch.ones((<span class="number">1</span>, <span class="number">3</span>, <span class="number">224</span>, <span class="number">224</span>)).cuda()</span><br><span class="line"></span><br><span class="line"><span class="comment"># convert to TensorRT feeding sample data as input</span></span><br><span class="line">model_trt = torch2trt(model, [x])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Execution</span></span><br><span class="line">y = model(x)</span><br><span class="line">y_trt = model_trt(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the output against PyTorch</span></span><br><span class="line"><span class="built_in">print</span>(torch.<span class="built_in">max</span>(torch.<span class="built_in">abs</span>(y - y_trt)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save and load</span></span><br><span class="line">torch.save(model_trt.state_dict(), <span class="string">&#x27;alexnet_trt.pth&#x27;</span>)</span><br><span class="line"><span class="comment"># load with TRT Module</span></span><br><span class="line"><span class="keyword">from</span> torch2trt <span class="keyword">import</span> TRTModule</span><br><span class="line">model_trt = TRTModule()</span><br><span class="line">model_trt.load_state_dict(torch.load(<span class="string">&#x27;alexnet_trt.pth&#x27;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="c-Third-Party-TensorRTx"><a href="#c-Third-Party-TensorRTx" class="headerlink" title="c. Third Party: TensorRTx"></a>c. Third Party: <a target="_blank" rel="noopener" href="https://github.com/wang-xinyu/tensorrtx">TensorRTx</a></h3><p>TensorRTx is a repo with various hand-written C++ models. The basic idea of this repo is to write the C++ codes for every SOTA model with pre-trained weights stored in files, then use TensorRT API to call them, in order to build the Tensor RT Engine. It could be very easy to use the existing codes but not very suitable for self-designed models.</p>
+<p>An example of YOLO codes for building engine as follows:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CudaEngine* <span class="title">createEngine</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> maxBatchSize, IBuilder* builder, IBuilderConfig* config, DataType dt)</span> </span>&#123;</span><br><span class="line">    INetworkDefinition* network = builder-&gt;<span class="built_in">createNetworkV2</span>(<span class="number">0U</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create input tensor of shape &#123;3, INPUT_H, INPUT_W&#125; with name INPUT_BLOB_NAME</span></span><br><span class="line">    ITensor* data = network-&gt;<span class="built_in">addInput</span>(INPUT_BLOB_NAME, dt, Dims3&#123;<span class="number">3</span>, INPUT_H, INPUT_W&#125;);</span><br><span class="line">    <span class="built_in">assert</span>(data);</span><br><span class="line"></span><br><span class="line">    std::map&lt;std::string, Weights&gt; weightMap = <span class="built_in">loadWeights</span>(<span class="string">&quot;../yolov3-tiny.wts&quot;</span>);</span><br><span class="line">    Weights emptywts&#123;DataType::kFLOAT, <span class="literal">nullptr</span>, <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> lr0 = <span class="built_in">convBnLeaky</span>(network, weightMap, *data, <span class="number">16</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">auto</span> pool1 = network-&gt;<span class="built_in">addPoolingNd</span>(*lr0-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool1-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr2 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool1-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">32</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">auto</span> pool3 = network-&gt;<span class="built_in">addPoolingNd</span>(*lr2-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool3-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr4 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool3-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">64</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">auto</span> pool5 = network-&gt;<span class="built_in">addPoolingNd</span>(*lr4-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool5-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr6 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool5-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">128</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">6</span>);</span><br><span class="line">    <span class="keyword">auto</span> pool7 = network-&gt;<span class="built_in">addPoolingNd</span>(*lr6-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool7-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr8 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool7-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">auto</span> pool9 = network-&gt;<span class="built_in">addPoolingNd</span>(*lr8-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool9-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr10 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool9-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">512</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">auto</span> pad11 = network-&gt;<span class="built_in">addPaddingNd</span>(*lr10-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), DimsHW&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, DimsHW&#123;<span class="number">1</span>, <span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> pool11 = network-&gt;<span class="built_in">addPoolingNd</span>(*pad11-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), PoolingType::kMAX, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    pool11-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">1</span>, <span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">auto</span> lr12 = <span class="built_in">convBnLeaky</span>(network, weightMap, *pool11-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">1024</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">12</span>);</span><br><span class="line">    <span class="keyword">auto</span> lr13 = <span class="built_in">convBnLeaky</span>(network, weightMap, *lr12-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">13</span>);</span><br><span class="line">    <span class="keyword">auto</span> lr14 = <span class="built_in">convBnLeaky</span>(network, weightMap, *lr13-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">512</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">14</span>);</span><br><span class="line">    IConvolutionLayer* conv15 = network-&gt;<span class="built_in">addConvolutionNd</span>(*lr14-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">3</span> * (Yolo::CLASS_NUM + <span class="number">5</span>), DimsHW&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, weightMap[<span class="string">&quot;module_list.15.Conv2d.weight&quot;</span>], weightMap[<span class="string">&quot;module_list.15.Conv2d.bias&quot;</span>]);</span><br><span class="line">    <span class="comment">// 16 is yolo</span></span><br><span class="line">    <span class="keyword">auto</span> l17 = lr13;</span><br><span class="line">    <span class="keyword">auto</span> lr18 = <span class="built_in">convBnLeaky</span>(network, weightMap, *l17-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">128</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">18</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> *deval = <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">float</span>*&gt;(<span class="built_in">malloc</span>(<span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">float</span>) * <span class="number">128</span> * <span class="number">2</span> * <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">128</span> * <span class="number">2</span> * <span class="number">2</span>; i++) &#123;</span><br><span class="line">        deval[i] = <span class="number">1.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Weights deconvwts19&#123;DataType::kFLOAT, deval, <span class="number">128</span> * <span class="number">2</span> * <span class="number">2</span>&#125;;</span><br><span class="line">    IDeconvolutionLayer* deconv19 = network-&gt;<span class="built_in">addDeconvolutionNd</span>(*lr18-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">128</span>, DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;, deconvwts19, emptywts);</span><br><span class="line">    <span class="built_in">assert</span>(deconv19);</span><br><span class="line">    deconv19-&gt;<span class="built_in">setStrideNd</span>(DimsHW&#123;<span class="number">2</span>, <span class="number">2</span>&#125;);</span><br><span class="line">    deconv19-&gt;<span class="built_in">setNbGroups</span>(<span class="number">128</span>);</span><br><span class="line">    weightMap[<span class="string">&quot;deconv19&quot;</span>] = deconvwts19;</span><br><span class="line"></span><br><span class="line">    ITensor* inputTensors[] = &#123;deconv19-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), lr8-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>)&#125;;</span><br><span class="line">    <span class="keyword">auto</span> cat20 = network-&gt;<span class="built_in">addConcatenation</span>(inputTensors, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">auto</span> lr21 = <span class="built_in">convBnLeaky</span>(network, weightMap, *cat20-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">21</span>);</span><br><span class="line">    IConvolutionLayer* conv22 = network-&gt;<span class="built_in">addConvolutionNd</span>(*lr21-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), <span class="number">3</span> * (Yolo::CLASS_NUM + <span class="number">5</span>), DimsHW&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, weightMap[<span class="string">&quot;module_list.22.Conv2d.weight&quot;</span>], weightMap[<span class="string">&quot;module_list.22.Conv2d.bias&quot;</span>]);</span><br><span class="line">    <span class="comment">// 22 is yolo</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> creator = <span class="built_in">getPluginRegistry</span>()-&gt;<span class="built_in">getPluginCreator</span>(<span class="string">&quot;YoloLayer_TRT&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> PluginFieldCollection* pluginData = creator-&gt;<span class="built_in">getFieldNames</span>();</span><br><span class="line">    IPluginV2 *pluginObj = creator-&gt;<span class="built_in">createPlugin</span>(<span class="string">&quot;yololayer&quot;</span>, pluginData);</span><br><span class="line">    ITensor* inputTensors_yolo[] = &#123;conv15-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>), conv22-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>)&#125;;</span><br><span class="line">    <span class="keyword">auto</span> yolo = network-&gt;<span class="built_in">addPluginV2</span>(inputTensors_yolo, <span class="number">2</span>, *pluginObj);</span><br><span class="line"></span><br><span class="line">    yolo-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>)-&gt;<span class="built_in">setName</span>(OUTPUT_BLOB_NAME);</span><br><span class="line">    network-&gt;<span class="built_in">markOutput</span>(*yolo-&gt;<span class="built_in">getOutput</span>(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Build engine</span></span><br><span class="line">    builder-&gt;<span class="built_in">setMaxBatchSize</span>(maxBatchSize);</span><br><span class="line">    config-&gt;<span class="built_in">setMaxWorkspaceSize</span>(<span class="number">16</span> * (<span class="number">1</span> &lt;&lt; <span class="number">20</span>));  <span class="comment">// 16MB</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> USE_FP16</span></span><br><span class="line">    config-&gt;<span class="built_in">setFlag</span>(BuilderFlag::kFP16);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Building engine, please wait for a while...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    ICudaEngine* engine = builder-&gt;<span class="built_in">buildEngineWithConfig</span>(*network, *config);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Build engine successfully!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Don&#x27;t need the network any more</span></span><br><span class="line">    network-&gt;<span class="built_in">destroy</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Release host memory</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; mem : weightMap)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">free</span>((<span class="keyword">void</span>*) (mem.second.values));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> engine;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="d-Third-Party-TensorRT-Pro"><a href="#d-Third-Party-TensorRT-Pro" class="headerlink" title="d. Third Party: TensorRT_Pro"></a>d. Third Party: <a target="_blank" rel="noopener" href="https://github.com/shouxieai/tensorRT_Pro">TensorRT_Pro</a></h3><p>TensorRT_Pro is focusing on transforming PyTorch Model to ONNX model, then use ONNX model to build TensorRT Engine. The reasons are, that PyTorch official provides stable methods for transforming PyTorch PT model to ONNX model, and NVIDIA official provides up to now relative better methods for the ONNX-TensorRT-Transfer. With standard ONNX model, it could in some cases solve the problems we could meet under different deploy-environments. It’s a very practical repo and I’m looking into it these days.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li>NVIDIA Official Docs <a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#python_example_unsupported">https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#python_example_unsupported</a></li>
+<li> ONNX supported operators in ONNX-TensorRT: <a target="_blank" rel="noopener" href="https://github.com/onnx/onnx-tensorrt/blob/master/docs/operators.md">https://github.com/onnx/onnx-tensorrt/blob/master/docs/operators.md</a></li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/adskenlin">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/kenlin93">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
